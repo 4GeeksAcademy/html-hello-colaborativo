@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo — MAISON.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F7F3',
+            brandDark: '#20232A',
+            brandAccent: '#3159A5',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-brandBg text-brandDark antialiased">
+
+  <!-- ===== NAVBAR COMPARTIDO ===== -->
+  <header class="border-b border-gray-200 bg-brandBg">
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.html"
+         class="shrink-0 text-xl font-semibold tracking-widest text-brandDark">
+        MAISON.
+      </a>
+
+      <form action="#" role="search" class="mx-auto hidden w-full max-w-md sm:block">
+        <label for="site-search" class="sr-only">Buscar productos</label>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-200 bg-white px-4 py-2.5 text-sm
+                 text-brandDark placeholder:text-gray-400
+                 focus:border-brandAccent focus:outline-none"
+        >
+      </form>
+
+      <nav aria-label="Cuenta de usuario"
+           class="ml-auto flex shrink-0 items-center gap-4 text-sm">
+        <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
+          Mi cuenta
+        </a>
+        <a href="carrito.html" class="text-brandDark hover:text-brandAccent">
+          Carrito
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Categorías"
+         class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
+                px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
+                sm:px-6 lg:px-8">
+      <a href="novedades.html" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="calzado.html" class="hover:text-brandAccent">CALZADO</a>
+      <a href="camisas.html" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="pantalones.html" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="accesorios.html" class="hover:text-brandAccent">ACCESORIOS</a>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
+    <!-- Encabezado del catálogo -->
+    <section aria-labelledby="catalogo-titulo">
+      <h1 id="catalogo-titulo" class="text-2xl font-semibold tracking-wider text-brandDark">
+        CATÁLOGO
+      </h1>
+      <p class="mt-1 text-sm text-gray-500">
+        Explora nuestra colección.
+      </p>
+    </section>
+
+    <!-- ===== BARRA DE FILTROS ===== -->
+    <section aria-label="Filtros de productos" class="mt-8 flex flex-wrap gap-4 border-b border-gray-200 pb-6">
+      <!-- Filtro por categoría -->
+      <div class="flex flex-col gap-1">
+        <label for="filter-categoria" class="text-xs font-medium tracking-wider text-brandDark">
+          CATEGORÍA
+        </label>
+        <select
+          id="filter-categoria"
+          class="w-44 border border-gray-200 bg-white px-3 py-2 text-sm text-brandDark
+                 focus:border-brandAccent focus:outline-none"
+        >
+          <option value="todas">Todas</option>
+          <option value="Novedades">Novedades</option>
+          <option value="Calzado">Calzado</option>
+          <option value="Camisas">Camisas</option>
+          <option value="Pantalones">Pantalones</option>
+          <option value="Accesorios">Accesorios</option>
+        </select>
+      </div>
+
+      <!-- Filtro por talla -->
+      <div class="flex flex-col gap-1">
+        <label for="filter-talla" class="text-xs font-medium tracking-wider text-brandDark">
+          TALLA
+        </label>
+        <select
+          id="filter-talla"
+          class="w-36 border border-gray-200 bg-white px-3 py-2 text-sm text-brandDark
+                 focus:border-brandAccent focus:outline-none"
+        >
+          <option value="todas">Todas</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- ===== CUADRÍCULA DE PRODUCTOS ===== -->
+    <section aria-label="Listado de productos" class="mt-8">
+      <div
+        id="productos-grid"
+        class="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4"
+      >
+        <!-- Los productos se renderizan desde JavaScript -->
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div
+        id="sin-resultados"
+        class="hidden mt-16 text-center"
+        role="status"
+      >
+        <p class="text-base text-gray-400">
+          No hay productos que coincidan con los filtros seleccionados.
+        </p>
+        <p class="mt-1 text-sm text-gray-300">
+          Prueba a cambiar los criterios de búsqueda.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER COMPARTIDO ===== -->
+  <footer class="bg-brandDark text-brandBg mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+        <div>
+          <a href="index.html"
+             class="text-xl font-semibold tracking-widest">
+            MAISON.
+          </a>
+          <p class="mt-3 text-sm text-gray-300">
+            L'élégance en mouvement.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="calzado.html" class="hover:text-white">Calzado</a></li>
+            <li><a href="camisas.html" class="hover:text-white">Camisas</a></li>
+            <li><a href="pantalones.html" class="hover:text-white">Pantalones</a></li>
+            <li><a href="accesorios.html" class="hover:text-white">Accesorios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">LEGAL</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="terminos.html" class="hover:text-white">Términos y condiciones</a></li>
+            <li><a href="privacidad.html" class="hover:text-white">Política de privacidad</a></li>
+            <li><a href="sobre-nosotros.html" class="hover:text-white">Sobre la marca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CONTACTO</h2>
+          <p class="mt-4 text-sm text-gray-300">
+            Escríbenos para cualquier consulta.
+          </p>
+          <a href="contacto.html"
+             class="mt-3 inline-block text-sm underline underline-offset-4 hover:text-white">
+            Contactar
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 border-t border-gray-600 pt-6 text-xs text-gray-400">
+        &copy; 2026 MAISON. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT: DATOS Y FILTROS ===== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ----------------------------------------------------------------
+      // DATOS PROVISIONALES — 20 productos de referencia
+      // Estos datos son de ejemplo y no representan información comercial
+      // real. Serán reemplazados cuando se disponga de los datos
+      // definitivos del catálogo.
+      // ----------------------------------------------------------------
+      var productos = [
+        {
+          id: 1,
+          nombre: 'Blusa Sirena',
+          categoria: 'Novedades',
+          tallas: ['S', 'M', 'L'],
+          precio: 89,
+          colorPlaceholder: '#E8E4D9'
+        },
+        {
+          id: 2,
+          nombre: 'Zapatos Derby',
+          categoria: 'Calzado',
+          tallas: ['39', '40', '41', '42', '43'],
+          precio: 145,
+          colorPlaceholder: '#D4CFC0'
+        },
+        {
+          id: 3,
+          nombre: 'Camisa Oxford',
+          categoria: 'Camisas',
+          tallas: ['S', 'M', 'L', 'XL'],
+          precio: 95,
+          colorPlaceholder: '#EDEAE0'
+        },
+        {
+          id: 4,
+          nombre: 'Pantalón Tailleur',
+          categoria: 'Pantalones',
+          tallas: ['S', 'M', 'L'],
+          precio: 120,
+          colorPlaceholder: '#D9D5C8'
+        },
+        {
+          id: 5,
+          nombre: 'Cinturón de Cuero',
+          categoria: 'Accesorios',
+          tallas: ['Única'],
+          precio: 55,
+          colorPlaceholder: '#C4BEB0'
+        },
+        {
+          id: 6,
+          nombre: 'Abrigo Camel',
+          categoria: 'Novedades',
+          tallas: ['S', 'M', 'L'],
+          precio: 220,
+          colorPlaceholder: '#D6CBB8'
+        },
+        {
+          id: 7,
+          nombre: 'Botines Chelsea',
+          categoria: 'Calzado',
+          tallas: ['38', '39', '40', '41'],
+          precio: 165,
+          colorPlaceholder: '#C2BDB0'
+        },
+        {
+          id: 8,
+          nombre: 'Camisa de Lino',
+          categoria: 'Camisas',
+          tallas: ['XS', 'S', 'M', 'L'],
+          precio: 85,
+          colorPlaceholder: '#F0EDE3'
+        },
+        {
+          id: 9,
+          nombre: 'Vestido Midi',
+          categoria: 'Novedades',
+          tallas: ['XS', 'S', 'M'],
+          precio: 135,
+          colorPlaceholder: '#E3DDD0'
+        },
+        {
+          id: 10,
+          nombre: 'Bolso Tote',
+          categoria: 'Accesorios',
+          tallas: ['Única'],
+          precio: 175,
+          colorPlaceholder: '#B8B2A5'
+        },
+        {
+          id: 11,
+          nombre: 'Sandalias Planas',
+          categoria: 'Calzado',
+          tallas: ['36', '37', '38', '39', '40'],
+          precio: 75,
+          colorPlaceholder: '#DFD9CC'
+        },
+        {
+          id: 12,
+          nombre: 'Camiseta Algodón',
+          categoria: 'Novedades',
+          tallas: ['XS', 'S', 'M', 'L', 'XL'],
+          precio: 45,
+          colorPlaceholder: '#F5F2E8'
+        },
+        {
+          id: 13,
+          nombre: 'Pantalón Palazzo',
+          categoria: 'Pantalones',
+          tallas: ['S', 'M', 'L', 'XL'],
+          precio: 110,
+          colorPlaceholder: '#D1CBBB'
+        },
+        {
+          id: 14,
+          nombre: 'Pendientes de Plata',
+          categoria: 'Accesorios',
+          tallas: ['Única'],
+          precio: 65,
+          colorPlaceholder: '#E5E0D5'
+        },
+        {
+          id: 15,
+          nombre: 'Blazer Estructurado',
+          categoria: 'Novedades',
+          tallas: ['S', 'M', 'L'],
+          precio: 190,
+          colorPlaceholder: '#C9C2B3'
+        },
+        {
+          id: 16,
+          nombre: 'Mocasines de Cuero',
+          categoria: 'Calzado',
+          tallas: ['39', '40', '41', '42'],
+          precio: 155,
+          colorPlaceholder: '#BEB7A8'
+        },
+        {
+          id: 17,
+          nombre: 'Camisa Denim',
+          categoria: 'Camisas',
+          tallas: ['S', 'M', 'L', 'XL'],
+          precio: 105,
+          colorPlaceholder: '#D8D3C5'
+        },
+        {
+          id: 18,
+          nombre: 'Pantalón Recto',
+          categoria: 'Pantalones',
+          tallas: ['XS', 'S', 'M', 'L'],
+          precio: 98,
+          colorPlaceholder: '#E0DBCE'
+        },
+        {
+          id: 19,
+          nombre: 'Pañuelo de Seda',
+          categoria: 'Accesorios',
+          tallas: ['Única'],
+          precio: 45,
+          colorPlaceholder: '#EFE8D8'
+        },
+        {
+          id: 20,
+          nombre: 'Chaqueta de Cuero',
+          categoria: 'Novedades',
+          tallas: ['M', 'L', 'XL'],
+          precio: 250,
+          colorPlaceholder: '#A9A294'
+        }
+      ];
+
+      // ===== Referencias al DOM =====
+      var gridEl = document.getElementById('productos-grid');
+      var sinResultadosEl = document.getElementById('sin-resultados');
+      var filtroCategoria = document.getElementById('filter-categoria');
+      var filtroTalla = document.getElementById('filter-talla');
+
+      // ===== Función para obtener tallas únicas desde los datos =====
+      function obtenerTallasUnicas(productos) {
+        var conjunto = {};
+        productos.forEach(function (p) {
+          p.tallas.forEach(function (t) {
+            conjunto[t] = true;
+          });
+        });
+        return Object.keys(conjunto).sort();
+      }
+
+      // ===== Poblar el selector de tallas dinámicamente =====
+      function poblarSelectorTallas() {
+        var tallas = obtenerTallasUnicas(productos);
+        var select = filtroTalla;
+        // Limpiar opciones existentes, mantener "Todas"
+        while (select.options.length > 1) {
+          select.remove(1);
+        }
+        tallas.forEach(function (t) {
+          var opt = document.createElement('option');
+          opt.value = t;
+          opt.textContent = t;
+          select.appendChild(opt);
+        });
+      }
+
+      // ===== Renderizar productos =====
+      function renderizarProductos(lista) {
+        if (lista.length === 0) {
+          gridEl.innerHTML = '';
+          sinResultadosEl.classList.remove('hidden');
+          return;
+        }
+
+        sinResultadosEl.classList.add('hidden');
+
+        var html = '';
+        lista.forEach(function (p) {
+          var tallasTexto = p.tallas.join(', ');
+
+          html += '<article class="flex flex-col">';
+          html += '  <div class="aspect-square w-full" style="background-color:' + p.colorPlaceholder + '"></div>';
+          html += '  <div class="mt-3 flex flex-col gap-1">';
+          html += '    <h3 class="text-sm font-medium text-brandDark leading-tight">';
+          html +=        escapeHtml(p.nombre);
+          html += '    </h3>';
+          html += '    <p class="text-xs text-gray-400">';
+          html +=        escapeHtml(p.categoria) + ' · ' + escapeHtml(tallasTexto);
+          html += '    </p>';
+          html += '    <p class="text-sm font-semibold text-brandDark mt-1" aria-label="Precio provisional: ' + p.precio + ' euros">';
+          html +=       p.precio + ' €';
+          html += '    </p>';
+          html += '  </div>';
+          html += '</article>';
+        });
+
+        gridEl.innerHTML = html;
+      }
+
+      // ===== Escapar HTML para evitar inyección =====
+      function escapeHtml(texto) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(texto));
+        return div.innerHTML;
+      }
+
+      // ===== Aplicar filtros =====
+      function aplicarFiltros() {
+        var categoriaSel = filtroCategoria.value;
+        var tallaSel = filtroTalla.value;
+
+        var filtrados = productos.filter(function (p) {
+          // Filtro por categoría
+          if (categoriaSel !== 'todas' && p.categoria !== categoriaSel) {
+            return false;
+          }
+          // Filtro por talla
+          if (tallaSel !== 'todas' && p.tallas.indexOf(tallaSel) === -1) {
+            return false;
+          }
+          return true;
+        });
+
+        renderizarProductos(filtrados);
+      }
+
+      // ===== Adjuntar eventos =====
+      filtroCategoria.addEventListener('change', aplicarFiltros);
+      filtroTalla.addEventListener('change', aplicarFiltros);
+
+      // ===== Render inicial (todos los productos) =====
+      poblarSelectorTallas();
+      renderizarProductos(productos);
+    })();
+  </script>
+
+</body>
+</html>
