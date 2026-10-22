@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blusa Sirena — MAISON.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F7F3',
+            brandDark: '#20232A',
+            brandAccent: '#3159A5',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-brandBg text-brandDark antialiased">
+
+  <!-- ===== NAVBAR COMPARTIDO ===== -->
+  <header class="border-b border-gray-200 bg-brandBg">
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.html"
+         class="shrink-0 text-xl font-semibold tracking-widest text-brandDark">
+        MAISON.
+      </a>
+
+      <form action="#" role="search" class="mx-auto hidden w-full max-w-md sm:block">
+        <label for="site-search" class="sr-only">Buscar productos</label>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-200 bg-white px-4 py-2.5 text-sm
+                 text-brandDark placeholder:text-gray-400
+                 focus:border-brandAccent focus:outline-none"
+        >
+      </form>
+
+      <nav aria-label="Cuenta de usuario"
+           class="ml-auto flex shrink-0 items-center gap-4 text-sm">
+        <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
+          Mi cuenta
+        </a>
+        <a href="carrito.html" class="text-brandDark hover:text-brandAccent">
+          Carrito
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Categorías"
+         class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
+                px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
+                sm:px-6 lg:px-8">
+      <a href="novedades.html" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="calzado.html" class="hover:text-brandAccent">CALZADO</a>
+      <a href="camisas.html" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="pantalones.html" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="accesorios.html" class="hover:text-brandAccent">ACCESORIOS</a>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
+    <!-- Breadcrumb de navegación -->
+    <nav aria-label="Breadcrumb" class="mb-6 text-xs text-gray-400">
+      <ol class="flex items-center gap-1.5">
+        <li><a href="index.html" class="hover:text-brandAccent">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="catalog.html" class="hover:text-brandAccent">Catálogo</a></li>
+        <li aria-hidden="true">/</li>
+        <li id="breadcrumb-producto" class="text-brandDark font-medium" aria-current="page">Producto</li>
+      </ol>
+    </nav>
+
+    <!-- ===== SECCIÓN PRINCIPAL: DOS COLUMNAS ===== -->
+    <div class="flex flex-col gap-8 lg:flex-row">
+
+      <!-- Columna izquierda: imagen -->
+      <section aria-label="Imagen del producto" class="w-full lg:w-1/2">
+        <div class="aspect-[4/5] w-full overflow-hidden bg-gray-100">
+          <img
+            id="product-imagen"
+            src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&h=1000"
+            alt="Imagen del producto"
+            class="h-full w-full object-cover"
+          >
+        </div>
+      </section>
+
+      <!-- Columna derecha: información y controles -->
+      <section aria-label="Información del producto" class="flex w-full flex-col gap-6 lg:w-1/2 lg:pl-10">
+
+        <!-- Nombre del producto -->
+        <div>
+          <h1 id="product-nombre" class="text-2xl font-semibold tracking-wider text-brandDark">Producto</h1>
+          <p class="mt-1 text-xs text-gray-400">Ref. MAI-<span id="product-referencia">000</span></p>
+        </div>
+
+        <!-- Precio -->
+        <p id="product-precio" class="text-xl font-semibold text-brandDark"></p>
+
+        <!-- Selector de talla -->
+        <div class="flex flex-col gap-2">
+          <label for="product-talla" class="text-xs font-medium tracking-wider text-brandDark">
+            TALLA
+          </label>
+          <select
+            id="product-talla"
+            class="w-28 border border-gray-200 bg-white px-3 py-2 text-sm text-brandDark
+                   focus:border-brandAccent focus:outline-none"
+          >
+          </select>
+        </div>
+
+        <!-- Selector de cantidad -->
+        <div class="flex flex-col gap-2">
+          <label class="text-xs font-medium tracking-wider text-brandDark">
+            CANTIDAD
+          </label>
+          <div class="flex items-center border border-gray-200 bg-white">
+            <button
+              type="button"
+              id="btn-disminuir"
+              class="flex h-10 w-10 items-center justify-center text-brandDark
+                     hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              aria-label="Disminuir cantidad"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <span
+              id="cantidad-valor"
+              class="flex h-10 w-10 items-center justify-center text-sm font-medium text-brandDark"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              1
+            </span>
+            <button
+              type="button"
+              id="btn-aumentar"
+              class="flex h-10 w-10 items-center justify-center text-brandDark
+                     hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              aria-label="Aumentar cantidad"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botón Agregar al carrito -->
+        <div class="pt-2">
+          <button
+            type="button"
+            id="btn-agregar-carrito"
+            class="w-full border border-brandDark bg-brandDark px-6 py-3 text-sm font-medium tracking-wider text-white
+                   hover:bg-brandAccent hover:border-brandAccent
+                   focus:bg-brandAccent focus:border-brandAccent focus:outline-none
+                   transition-colors"
+          >
+            Agregar al carrito
+          </button>
+          <p class="mt-2 text-xs text-gray-400">
+            Funcionalidad de carrito pendiente de implementación.
+          </p>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ===== SECCIÓN DE DESCRIPCIÓN DETALLADA ===== -->
+    <section aria-labelledby="descripcion-titulo" class="mt-16 border-t border-gray-200 pt-10">
+      <h2 id="descripcion-titulo" class="text-lg font-semibold tracking-wider text-brandDark">
+        DESCRIPCIÓN
+      </h2>
+
+      <div class="mt-6 grid gap-10 md:grid-cols-2">
+
+        <!-- Materiales -->
+        <div>
+          <h3 class="text-sm font-medium tracking-wider text-brandDark">MATERIALES</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-500">
+            100 % algodón orgánico de fibra larga. Tejido de sarga ligero con
+            acabado suave al tacto. Forro interior en viscosa de origen sostenible.
+            <br>
+            <span class="text-gray-300 italic">— Composición provisional, pendiente de confirmación.</span>
+          </p>
+        </div>
+
+        <!-- Uso recomendado -->
+        <div>
+          <h3 class="text-sm font-medium tracking-wider text-brandDark">USO RECOMENDADO</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-500">
+            Prenda versátil ideal para looks de oficina, reuniones informales
+            y ocasiones de media etiqueta. Combina con pantalones sastre,
+            faldas lápiz o vaqueros de corte recto para un estilo equilibrado
+            entre lo formal y lo contemporáneo.
+            <br>
+            <span class="text-gray-300 italic">— Descripción provisional, pendiente de confirmación.</span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER COMPARTIDO ===== -->
+  <footer class="bg-brandDark text-brandBg mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+        <div>
+          <a href="index.html"
+             class="text-xl font-semibold tracking-widest">
+            MAISON.
+          </a>
+          <p class="mt-3 text-sm text-gray-300">
+            L'élégance en mouvement.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="calzado.html" class="hover:text-white">Calzado</a></li>
+            <li><a href="camisas.html" class="hover:text-white">Camisas</a></li>
+            <li><a href="pantalones.html" class="hover:text-white">Pantalones</a></li>
+            <li><a href="accesorios.html" class="hover:text-white">Accesorios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">LEGAL</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="terminos.html" class="hover:text-white">Términos y condiciones</a></li>
+            <li><a href="privacidad.html" class="hover:text-white">Política de privacidad</a></li>
+            <li><a href="sobre-nosotros.html" class="hover:text-white">Sobre la marca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CONTACTO</h2>
+          <p class="mt-4 text-sm text-gray-300">
+            Escríbenos para cualquier consulta.
+          </p>
+          <a href="contacto.html"
+             class="mt-3 inline-block text-sm underline underline-offset-4 hover:text-white">
+            Contactar
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 border-t border-gray-600 pt-6 text-xs text-gray-400">
+        &copy; 2026 MAISON. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT: FICHA Y SELECTOR DE CANTIDAD ===== -->
+  <script src="products.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var btnAumentar = document.getElementById('btn-aumentar');
+      var btnDisminuir = document.getElementById('btn-disminuir');
+      var cantidadSpan = document.getElementById('cantidad-valor');
+      var btnAgregar = document.getElementById('btn-agregar-carrito');
+      var productoId = new URLSearchParams(window.location.search).get('id');
+      var producto = window.PRODUCTOS.find(function (item) {
+        return String(item.id) === productoId;
+      });
+
+      if (!producto) {
+        document.querySelector('main').innerHTML = '<section class="py-16 text-center"><h1 class="text-2xl font-semibold">Producto no encontrado</h1><p class="mt-3 text-gray-500">Elige un producto desde el <a class="underline hover:text-brandAccent" href="catalog.html">catálogo</a>.</p></section>';
+        return;
+      }
+
+      document.title = producto.nombre + ' — MAISON.';
+      document.getElementById('breadcrumb-producto').textContent = producto.nombre;
+      document.getElementById('product-nombre').textContent = producto.nombre;
+      document.getElementById('product-referencia').textContent = String(producto.id).padStart(3, '0');
+      var imagen = document.getElementById('product-imagen');
+      imagen.src = producto.imagen.replace('/400/500', '/800/1000');
+      imagen.alt = producto.nombre;
+      document.getElementById('product-precio').textContent = producto.precio + ' €';
+      document.getElementById('product-precio').setAttribute('aria-label', 'Precio: ' + producto.precio + ' euros');
+
+      var selectorTalla = document.getElementById('product-talla');
+      selectorTalla.innerHTML = '';
+      producto.tallas.forEach(function (talla, indice) {
+        var opcion = document.createElement('option');
+        opcion.value = talla;
+        opcion.textContent = talla;
+        opcion.selected = indice === 0;
+        selectorTalla.appendChild(opcion);
+      });
+
+      // ===== Selector de cantidad =====
+      function actualizarCantidad(nuevaCantidad) {
+        if (nuevaCantidad < 1) return;
+        cantidadSpan.textContent = nuevaCantidad;
+      }
+
+      btnAumentar.addEventListener('click', function () {
+        var actual = parseInt(cantidadSpan.textContent, 10);
+        actualizarCantidad(actual + 1);
+      });
+
+      btnDisminuir.addEventListener('click', function () {
+        var actual = parseInt(cantidadSpan.textContent, 10);
+        actualizarCantidad(actual - 1);
+      });
+
+      // ===== Botón Agregar al carrito =====
+      // Sin funcionalidad de carrito implementada.
+      // Muestra un mensaje informativo al hacer clic.
+      btnAgregar.addEventListener('click', function () {
+        var talla = document.getElementById('product-talla').value;
+        var cantidad = cantidadSpan.textContent;
+        alert(
+          'Función de carrito no implementada.\n\n' +
+          'Producto: ' + producto.nombre + '\n' +
+          'Talla: ' + talla + '\n' +
+          'Cantidad: ' + cantidad
+        );
+      });
+    })();
+  </script>
+
+</body>
+</html>
