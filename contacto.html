@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta con MAISON. Formulario de demostración académica; no se envían mensajes reales.">
+  <meta name="theme-color" content="#F8F7F3">
+  <title>Contacto — MAISON.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F7F3',
+            brandDark: '#20232A',
+            brandAccent: '#3159A5',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-brandBg text-brandDark antialiased">
+
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:block focus:bg-white focus:p-4 focus:text-brandAccent">Saltar al contenido</a>
+
+  <!-- ===== NAVBAR COMPARTIDO ===== -->
+  <header class="border-b border-gray-200 bg-brandBg">
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.html"
+         class="shrink-0 text-xl font-semibold tracking-widest text-brandDark">
+        MAISON.
+      </a>
+
+      <form action="#" role="search" class="mx-auto hidden w-full max-w-md sm:block">
+        <label for="site-search" class="sr-only">Buscar productos</label>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-200 bg-white px-4 py-2.5 text-sm
+                 text-brandDark placeholder:text-gray-400
+                 focus:border-brandAccent focus:outline-none"
+        >
+      </form>
+
+      <nav aria-label="Cuenta de usuario"
+           class="ml-auto flex shrink-0 items-center gap-4 text-sm">
+        <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
+          Mi cuenta
+        </a>
+        <a href="cart.html" class="text-brandDark hover:text-brandAccent">
+          Carrito
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Categorías"
+         class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
+                px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
+                sm:px-6 lg:px-8">
+      <a href="catalog.html#novedades" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="catalog.html#calzado" class="hover:text-brandAccent">CALZADO</a>
+      <a href="catalog.html#camisas" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="catalog.html#pantalones" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="catalog.html#accesorios" class="hover:text-brandAccent">ACCESORIOS</a>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main id="contenido" class="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <section aria-labelledby="contacto-titulo" class="border-b border-gray-200 pb-8">
+      <p class="mb-3 text-xs font-medium uppercase tracking-widest text-brandAccent">Estamos aquí para ti</p>
+      <h1 id="contacto-titulo" class="font-serif text-4xl sm:text-5xl">Contacto</h1>
+      <p class="mt-4 max-w-2xl text-sm leading-6 text-gray-600">
+        <strong class="font-semibold text-brandDark">Prototipo académico.</strong>
+        Este formulario es de demostración y no envía ningún mensaje. Utiliza únicamente datos ficticios.
+      </p>
+    </section>
+
+    <div class="mt-10 grid items-start gap-10 sm:grid-cols-[minmax(0,1fr)_16rem]">
+
+      <form action="#" method="dialog" class="min-w-0" aria-label="Formulario de contacto de demostración">
+        <p class="mb-6 text-xs text-gray-600">Los campos con asterisco (*) serían obligatorios en un envío real.</p>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="contacto-nombre" class="mb-2 block text-sm font-medium">Nombre <span aria-hidden="true">*</span></label>
+            <input id="contacto-nombre" type="text" autocomplete="off" placeholder="Nombre de ejemplo"
+                   class="block min-h-12 w-full min-w-0 border border-gray-300 bg-white px-3 py-3 text-base placeholder:text-gray-500 focus:border-brandAccent focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brandAccent">
+          </div>
+          <div>
+            <label for="contacto-email" class="mb-2 block text-sm font-medium">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input id="contacto-email" type="email" autocomplete="off" placeholder="nombre@example.com"
+                   class="block min-h-12 w-full min-w-0 border border-gray-300 bg-white px-3 py-3 text-base placeholder:text-gray-500 focus:border-brandAccent focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brandAccent">
+          </div>
+          <div class="sm:col-span-2">
+            <label for="contacto-tema" class="mb-2 block text-sm font-medium">Asunto</label>
+            <select id="contacto-tema"
+                    class="block min-h-12 w-full min-w-0 border border-gray-300 bg-white px-3 py-3 text-base focus:border-brandAccent focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brandAccent">
+              <option value="pedidos">Consulta sobre un pedido</option>
+              <option value="productos">Pregunta sobre un producto</option>
+              <option value="tiendas">Dónde nos encontramos</option>
+              <option value="otros">Otro asunto</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="contacto-mensaje" class="mb-2 block text-sm font-medium">Mensaje <span aria-hidden="true">*</span></label>
+            <textarea id="contacto-mensaje" rows="6" placeholder="Escribe aquí tu mensaje de ejemplo..."
+                      class="block min-h-32 w-full min-w-0 border border-gray-300 bg-white px-3 py-3 text-base placeholder:text-gray-500 focus:border-brandAccent focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brandAccent"></textarea>
+          </div>
+        </div>
+        <button type="button"
+                class="mt-7 flex min-h-12 w-full items-center justify-center bg-brandAccent px-4 py-3 text-sm font-semibold tracking-wider text-white transition-colors hover:bg-brandDark sm:w-auto sm:min-w-48 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+          ENVIAR MENSAJE
+        </button>
+        <p class="mt-3 text-xs leading-5 text-gray-600">Botón de demostración. No se enviará ningún mensaje real.</p>
+      </form>
+
+      <aside aria-labelledby="datos-titulo">
+        <h2 id="datos-titulo" class="text-sm font-semibold tracking-wider">DATOS DE LA MARCA</h2>
+        <dl class="mt-4 space-y-4 text-sm text-gray-600">
+          <div>
+            <dt class="font-medium text-brandDark">Atención al cliente</dt>
+            <dd class="mt-1">demo@maison.example</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-brandDark">Horario</dt>
+            <dd class="mt-1">Lunes a viernes · 9:00–18:00</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-brandDark">Sede ficticia</dt>
+            <dd class="mt-1">Calle de la Elegancia 12<br>28001 Madrid</dd>
+          </div>
+        </dl>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER COMPARTIDO ===== -->
+  <footer class="bg-brandDark text-brandBg mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+        <div>
+          <a href="index.html"
+             class="text-xl font-semibold tracking-widest">
+            MAISON.
+          </a>
+          <p class="mt-3 text-sm text-gray-300">
+            La elegancia en movimiento.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="catalog.html#novedades" class="hover:text-white">Novedades</a></li>
+            <li><a href="catalog.html#calzado" class="hover:text-white">Calzado</a></li>
+            <li><a href="catalog.html#camisas" class="hover:text-white">Camisas</a></li>
+            <li><a href="catalog.html#pantalones" class="hover:text-white">Pantalones</a></li>
+            <li><a href="catalog.html#accesorios" class="hover:text-white">Accesorios</a></li>
+            <li><a href="catalog.html#todas" class="hover:text-white">Catálogo completo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">LEGAL</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="terminos.html" class="hover:text-white">Términos y condiciones</a></li>
+            <li><a href="privacidad.html" class="hover:text-white">Política de privacidad</a></li>
+            <li><a href="sobre-nosotros.html" class="hover:text-white">Sobre la marca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CONTACTO</h2>
+          <p class="mt-4 text-sm text-gray-300">
+            Escríbenos para cualquier consulta.
+          </p>
+          <a href="contacto.html"
+             class="mt-3 inline-block text-sm underline underline-offset-4 hover:text-white">
+            Contactar
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 border-t border-gray-600 pt-6 text-xs text-gray-400">
+        &copy; 2026 MAISON. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

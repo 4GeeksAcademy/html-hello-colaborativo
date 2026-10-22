@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo MAISON: novedades, calzado, camisas, pantalones y accesorios para vestir cada día con elegancia.">
+  <meta name="theme-color" content="#F8F7F3">
   <title>Catálogo — MAISON.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,8 +20,28 @@
       },
     };
   </script>
+  <style>
+    /* ===== Filtro de categoría por anclas, sin JavaScript ===== */
+    .carta { scroll-margin-top: 6rem; }
+    /* Anclas ocultas antes de <main>; al activarse :target filtran la cuadrícula. */
+    .categoria-title { display: none; }
+    #todas:target ~ main .categoria-title[data-title="todas"],
+    #novedades:target ~ main .categoria-title[data-title="novedades"],
+    #calzado:target ~ main .categoria-title[data-title="calzado"],
+    #camisas:target ~ main .categoria-title[data-title="camisas"],
+    #pantalones:target ~ main .categoria-title[data-title="pantalones"],
+    #accesorios:target ~ main .categoria-title[data-title="accesorios"] { display: block; }
+
+    #novedades:target ~ main .carta:not([data-cat="Novedades"]),
+    #calzado:target ~ main .carta:not([data-cat="Calzado"]),
+    #camisas:target ~ main .carta:not([data-cat="Camisas"]),
+    #pantalones:target ~ main .carta:not([data-cat="Pantalones"]),
+    #accesorios:target ~ main .carta:not([data-cat="Accesorios"]) { display: none; }
+  </style>
 </head>
 <body class="bg-brandBg text-brandDark antialiased">
+
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:block focus:bg-white focus:p-4 focus:text-brandAccent">Saltar al contenido</a>
 
   <!-- ===== NAVBAR COMPARTIDO ===== -->
   <header class="border-b border-gray-200 bg-brandBg">
@@ -46,7 +68,7 @@
         <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
           Mi cuenta
         </a>
-        <a href="carrito.html" class="text-brandDark hover:text-brandAccent">
+        <a href="cart.html" class="text-brandDark hover:text-brandAccent">
           Carrito
         </a>
       </nav>
@@ -56,85 +78,466 @@
          class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
                 px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
                 sm:px-6 lg:px-8">
-      <a href="novedades.html" class="hover:text-brandAccent">NOVEDADES</a>
-      <a href="calzado.html" class="hover:text-brandAccent">CALZADO</a>
-      <a href="camisas.html" class="hover:text-brandAccent">CAMISAS</a>
-      <a href="pantalones.html" class="hover:text-brandAccent">PANTALONES</a>
-      <a href="accesorios.html" class="hover:text-brandAccent">ACCESORIOS</a>
+      <a href="catalog.html#novedades" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="catalog.html#calzado" class="hover:text-brandAccent">CALZADO</a>
+      <a href="catalog.html#camisas" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="catalog.html#pantalones" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="catalog.html#accesorios" class="hover:text-brandAccent">ACCESORIOS</a>
     </nav>
   </header>
 
+  <!-- Anclas para el filtro por categoría (no visibles) -->
+  <span id="todas" class="hidden" aria-hidden="true"></span>
+  <span id="novedades" class="hidden" aria-hidden="true"></span>
+  <span id="calzado" class="hidden" aria-hidden="true"></span>
+  <span id="camisas" class="hidden" aria-hidden="true"></span>
+  <span id="pantalones" class="hidden" aria-hidden="true"></span>
+  <span id="accesorios" class="hidden" aria-hidden="true"></span>
+
   <!-- ===== CONTENIDO PRINCIPAL ===== -->
-  <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  <main id="contenido" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
 
     <!-- Encabezado del catálogo -->
-    <section aria-labelledby="catalogo-titulo">
+    <section aria-labelledby="catalogo-titulo" class="border-b border-gray-200 pb-6">
       <h1 id="catalogo-titulo" class="text-2xl font-semibold tracking-wider text-brandDark">
         CATÁLOGO
       </h1>
-      <p class="mt-1 text-sm text-gray-500">
-        Explora nuestra colección.
+
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="todas">
+        Catálogo completo · Explora toda nuestra colección.
       </p>
-    </section>
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="novedades">
+        Novedades · Los últimos lanzamientos de la temporada.
+      </p>
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="calzado">
+        Calzado · Zapatos, botines y sandalias.
+      </p>
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="camisas">
+        Camisas · Cámisas clásicas, de lino y denim.
+      </p>
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="pantalones">
+        Pantalones · Tailleur, palazzo y de corte recto.
+      </p>
+      <p class="categoria-title mt-1 text-sm text-gray-500" data-title="accesorios">
+        Accesorios · Cinturones, bolsos, pendientes y pañuelos.
+      </p>
 
-    <!-- ===== BARRA DE FILTROS ===== -->
-    <section aria-label="Filtros de productos" class="mt-8 flex flex-wrap gap-4 border-b border-gray-200 pb-6">
-      <!-- Filtro por categoría -->
-      <div class="flex flex-col gap-1">
-        <label for="filter-categoria" class="text-xs font-medium tracking-wider text-brandDark">
-          CATEGORÍA
-        </label>
-        <select
-          id="filter-categoria"
-          class="w-44 border border-gray-200 bg-white px-3 py-2 text-sm text-brandDark
-                 focus:border-brandAccent focus:outline-none"
-        >
-          <option value="todas">Todas</option>
-          <option value="Novedades">Novedades</option>
-          <option value="Calzado">Calzado</option>
-          <option value="Camisas">Camisas</option>
-          <option value="Pantalones">Pantalones</option>
-          <option value="Accesorios">Accesorios</option>
-        </select>
-      </div>
-
-      <!-- Filtro por talla -->
-      <div class="flex flex-col gap-1">
-        <label for="filter-talla" class="text-xs font-medium tracking-wider text-brandDark">
-          TALLA
-        </label>
-        <select
-          id="filter-talla"
-          class="w-36 border border-gray-200 bg-white px-3 py-2 text-sm text-brandDark
-                 focus:border-brandAccent focus:outline-none"
-        >
-          <option value="todas">Todas</option>
-        </select>
-      </div>
+      <!-- Filtro por categoría (navegación por anclas, sin JavaScript) -->
+      <nav aria-label="Filtro por categoría" class="mt-5 flex flex-wrap gap-3">
+        <a href="catalog.html#todas" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">TODAS</a>
+        <a href="catalog.html#novedades" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">NOVEDADES</a>
+        <a href="catalog.html#calzado" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">CALZADO</a>
+        <a href="catalog.html#camisas" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">CAMISAS</a>
+        <a href="catalog.html#pantalones" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">PANTALONES</a>
+        <a href="catalog.html#accesorios" class="border border-brandDark px-4 py-2 text-xs font-medium tracking-wider text-brandDark hover:bg-brandDark hover:text-white">ACCESORIOS</a>
+      </nav>
     </section>
 
     <!-- ===== CUADRÍCULA DE PRODUCTOS ===== -->
-    <section aria-label="Listado de productos" class="mt-8">
-      <div
-        id="productos-grid"
-        class="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4"
-      >
-        <!-- Los productos se renderizan desde JavaScript -->
-      </div>
+    <section aria-label="Listado de productos" class="mt-10">
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
 
-      <!-- Mensaje cuando no hay resultados -->
-      <div
-        id="sin-resultados"
-        class="hidden mt-16 text-center"
-        role="status"
-      >
-        <p class="text-base text-gray-400">
-          No hay productos que coincidan con los filtros seleccionados.
-        </p>
-        <p class="mt-1 text-sm text-gray-300">
-          Prueba a cambiar los criterios de búsqueda.
-        </p>
-      </div>
+        <!-- 1 · Blusa Sirena · Novedades -->
+        <li id="producto-1" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://plus.unsplash.com/premium_photo-1664373232909-32af52b7cacd?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Blusa Sirena" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Blusa Sirena</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · S, M, L</p>
+          <p class="mt-2 text-sm font-semibold">89,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-001</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>89,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Algodón orgánico</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 2 · Zapatos Derby · Calzado -->
+        <li id="producto-2" class="carta flex flex-col" data-cat="Calzado">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1668069226492-508742b03147?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Zapatos Derby" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Zapatos Derby</h3>
+          <p class="mt-1 text-xs text-gray-400">Calzado · 39-43</p>
+          <p class="mt-2 text-sm font-semibold">145,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-002</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>39, 40, 41, 42, 43</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>145,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 3 · Camisa Oxford · Camisas -->
+        <li id="producto-3" class="carta flex flex-col" data-cat="Camisas">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1717127354833-e4d10625d3e7?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Camisa Oxford" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Camisa Oxford</h3>
+          <p class="mt-1 text-xs text-gray-400">Camisas · S-XL</p>
+          <p class="mt-2 text-sm font-semibold">95,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-003</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L, XL</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>95,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Algodón</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 4 · Pantalón Tailleur · Pantalones -->
+        <li id="producto-4" class="carta flex flex-col" data-cat="Pantalones">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Pantalón Tailleur" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Pantalón Tailleur</h3>
+          <p class="mt-1 text-xs text-gray-400">Pantalones · S, M, L</p>
+          <p class="mt-2 text-sm font-semibold">120,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-004</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>120,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Mezcla de lana</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 5 · Cinturón de Cuero · Accesorios -->
+        <li id="producto-5" class="carta flex flex-col" data-cat="Accesorios">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1664285612706-b32633c95820?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Cinturón de Cuero" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Cinturón de Cuero</h3>
+          <p class="mt-1 text-xs text-gray-400">Accesorios · Única</p>
+          <p class="mt-2 text-sm font-semibold">55,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-005</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>Única</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>55,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel grabada</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 6 · Abrigo Camel · Novedades -->
+        <li id="producto-6" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Abrigo Camel" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Abrigo Camel</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · S, M, L</p>
+          <p class="mt-2 text-sm font-semibold">220,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-006</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>220,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Lana y cachemir</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 7 · Botines Chelsea · Calzado -->
+        <li id="producto-7" class="carta flex flex-col" data-cat="Calzado">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Botines Chelsea" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Botines Chelsea</h3>
+          <p class="mt-1 text-xs text-gray-400">Calzado · 38-41</p>
+          <p class="mt-2 text-sm font-semibold">165,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-007</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>38, 39, 40, 41</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>165,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 8 · Camisa de Lino · Camisas -->
+        <li id="producto-8" class="carta flex flex-col" data-cat="Camisas">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://plus.unsplash.com/premium_photo-1782383827927-0f20294f79c8?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Camisa de Lino" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Camisa de Lino</h3>
+          <p class="mt-1 text-xs text-gray-400">Camisas · XS-L</p>
+          <p class="mt-2 text-sm font-semibold">85,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-008</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>XS, S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>85,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Lino</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 9 · Vestido Midi · Novedades -->
+        <li id="producto-9" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1789111161022-1970ba92f3b9?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Vestido Midi" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Vestido Midi</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · XS, S, M</p>
+          <p class="mt-2 text-sm font-semibold">135,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-009</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>XS, S, M</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>135,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Viscosa fluida</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 10 · Bolso Tote · Accesorios -->
+        <li id="producto-10" class="carta flex flex-col" data-cat="Accesorios">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1624687943971-e86af76d57de?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Bolso Tote" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Bolso Tote</h3>
+          <p class="mt-1 text-xs text-gray-400">Accesorios · Única</p>
+          <p class="mt-2 text-sm font-semibold">175,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-010</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>Única</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>175,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Lona y piel</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 11 · Sandalias Planas · Calzado -->
+        <li id="producto-11" class="carta flex flex-col" data-cat="Calzado">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1777979925976-723230e37453?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Sandalias Planas" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Sandalias Planas</h3>
+          <p class="mt-1 text-xs text-gray-400">Calzado · 36-40</p>
+          <p class="mt-2 text-sm font-semibold">75,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-011</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>36, 37, 38, 39, 40</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>75,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel suave</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 12 · Camiseta Algodón · Novedades -->
+        <li id="producto-12" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1759572095384-1a7e646d0d4f?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Camiseta Algodón" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Camiseta Algodón</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · XS-XL</p>
+          <p class="mt-2 text-sm font-semibold">45,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-012</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>XS, S, M, L, XL</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>45,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Algodón peinado</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 13 · Pantalón Palazzo · Pantalones -->
+        <li id="producto-13" class="carta flex flex-col" data-cat="Pantalones">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1789110520755-058df30bf9cb?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Pantalón Palazzo" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Pantalón Palazzo</h3>
+          <p class="mt-1 text-xs text-gray-400">Pantalones · S-XL</p>
+          <p class="mt-2 text-sm font-semibold">110,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-013</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L, XL</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>110,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Crepe fluido</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 14 · Pendientes de Plata · Accesorios -->
+        <li id="producto-14" class="carta flex flex-col" data-cat="Accesorios">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1713004539634-a6694a83f3d9?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Pendientes de Plata" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Pendientes de Plata</h3>
+          <p class="mt-1 text-xs text-gray-400">Accesorios · Única</p>
+          <p class="mt-2 text-sm font-semibold">65,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-014</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>Única</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>65,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Plata</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 15 · Blazer Estructurado · Novedades -->
+        <li id="producto-15" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1588189408846-30ad110a0f4c?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Blazer Estructurado" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Blazer Estructurado</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · S, M, L</p>
+          <p class="mt-2 text-sm font-semibold">190,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-015</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>190,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Lana técnica</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 16 · Mocasines de Cuero · Calzado -->
+        <li id="producto-16" class="carta flex flex-col" data-cat="Calzado">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://plus.unsplash.com/premium_photo-1783411051502-47624192f975?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Mocasines de Cuero" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Mocasines de Cuero</h3>
+          <p class="mt-1 text-xs text-gray-400">Calzado · 39-42</p>
+          <p class="mt-2 text-sm font-semibold">155,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-016</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>39, 40, 41, 42</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>155,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 17 · Camisa Denim · Camisas -->
+        <li id="producto-17" class="carta flex flex-col" data-cat="Camisas">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1740711152088-88a009e877bb?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Camisa Denim" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Camisa Denim</h3>
+          <p class="mt-1 text-xs text-gray-400">Camisas · S-XL</p>
+          <p class="mt-2 text-sm font-semibold">105,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-017</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>S, M, L, XL</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>105,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Denim</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 18 · Pantalón Recto · Pantalones -->
+        <li id="producto-18" class="carta flex flex-col" data-cat="Pantalones">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Pantalón Recto" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Pantalón Recto</h3>
+          <p class="mt-1 text-xs text-gray-400">Pantalones · XS-L</p>
+          <p class="mt-2 text-sm font-semibold">98,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-018</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>XS, S, M, L</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>98,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Algodón sarga</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 19 · Pañuelo de Seda · Accesorios -->
+        <li id="producto-19" class="carta flex flex-col" data-cat="Accesorios">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1623832101940-647285e32a58?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Pañuelo de Seda" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Pañuelo de Seda</h3>
+          <p class="mt-1 text-xs text-gray-400">Accesorios · Única</p>
+          <p class="mt-2 text-sm font-semibold">45,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-019</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>Única</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>45,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Seda</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+        <!-- 20 · Chaqueta de Cuero · Novedades -->
+        <li id="producto-20" class="carta flex flex-col" data-cat="Novedades">
+          <div class="aspect-square w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1727524366429-27de8607d5f6?auto=format&amp;fit=crop&amp;w=480&amp;h=600&amp;q=70" alt="Chaqueta de Cuero" width="480" height="600" loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </div>
+          <h3 class="mt-3 text-sm font-medium leading-tight">Chaqueta de Cuero</h3>
+          <p class="mt-1 text-xs text-gray-400">Novedades · M, L, XL</p>
+          <p class="mt-2 text-sm font-semibold">250,00 €</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs font-medium tracking-wider text-brandAccent underline underline-offset-4">Ver ficha</summary>
+            <dl class="mt-3 space-y-1 border-t border-gray-200 pt-3 text-xs text-gray-500">
+              <div class="flex justify-between"><dt>Ref.</dt><dd>MAI-020</dd></div>
+              <div class="flex justify-between"><dt>Tallas</dt><dd>M, L, XL</dd></div>
+              <div class="flex justify-between"><dt>Precio unitario</dt><dd>250,00 €</dd></div>
+              <div class="flex justify-between"><dt>Material</dt><dd>Piel</dd></div>
+            </dl>
+            <a href="cart.html" class="mt-3 flex min-h-10 items-center justify-center border border-brandDark bg-brandDark px-3 py-2 text-xs font-medium tracking-wider text-white hover:bg-brandAccent hover:border-brandAccent">Agregar al carrito</a>
+          </details>
+        </li>
+
+      </ul>
     </section>
 
   </main>
@@ -150,17 +553,19 @@
             MAISON.
           </a>
           <p class="mt-3 text-sm text-gray-300">
-            L'élégance en mouvement.
+            La elegancia en movimiento.
           </p>
         </div>
 
         <div>
           <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
           <ul class="mt-4 space-y-3 text-sm text-gray-300">
-            <li><a href="calzado.html" class="hover:text-white">Calzado</a></li>
-            <li><a href="camisas.html" class="hover:text-white">Camisas</a></li>
-            <li><a href="pantalones.html" class="hover:text-white">Pantalones</a></li>
-            <li><a href="accesorios.html" class="hover:text-white">Accesorios</a></li>
+            <li><a href="catalog.html#novedades" class="hover:text-white">Novedades</a></li>
+            <li><a href="catalog.html#calzado" class="hover:text-white">Calzado</a></li>
+            <li><a href="catalog.html#camisas" class="hover:text-white">Camisas</a></li>
+            <li><a href="catalog.html#pantalones" class="hover:text-white">Pantalones</a></li>
+            <li><a href="catalog.html#accesorios" class="hover:text-white">Accesorios</a></li>
+            <li><a href="catalog.html#todas" class="hover:text-white">Catálogo completo</a></li>
           </ul>
         </div>
 
@@ -191,119 +596,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- ===== JAVASCRIPT: DATOS Y FILTROS ===== -->
-  <script src="products.js"></script>
-  <script>
-    (function () {
-      'use strict';
-
-      var productos = window.PRODUCTOS;
-
-      // ===== Referencias al DOM =====
-      var gridEl = document.getElementById('productos-grid');
-      var sinResultadosEl = document.getElementById('sin-resultados');
-      var filtroCategoria = document.getElementById('filter-categoria');
-      var filtroTalla = document.getElementById('filter-talla');
-
-      // ===== Función para obtener tallas únicas desde los datos =====
-      function obtenerTallasUnicas(productos) {
-        var conjunto = {};
-        productos.forEach(function (p) {
-          p.tallas.forEach(function (t) {
-            conjunto[t] = true;
-          });
-        });
-        return Object.keys(conjunto).sort();
-      }
-
-      // ===== Poblar el selector de tallas dinámicamente =====
-      function poblarSelectorTallas() {
-        var tallas = obtenerTallasUnicas(productos);
-        var select = filtroTalla;
-        // Limpiar opciones existentes, mantener "Todas"
-        while (select.options.length > 1) {
-          select.remove(1);
-        }
-        tallas.forEach(function (t) {
-          var opt = document.createElement('option');
-          opt.value = t;
-          opt.textContent = t;
-          select.appendChild(opt);
-        });
-      }
-
-      // ===== Renderizar productos =====
-      function renderizarProductos(lista) {
-        if (lista.length === 0) {
-          gridEl.innerHTML = '';
-          sinResultadosEl.classList.remove('hidden');
-          return;
-        }
-
-        sinResultadosEl.classList.add('hidden');
-
-        var html = '';
-        lista.forEach(function (p) {
-          var tallasTexto = p.tallas.join(', ');
-
-          html += '<article class="flex flex-col">';
-          html += '  <a href="product.html?id=' + encodeURIComponent(p.id) + '">';
-          html += '    <img src="' + escapeHtml(p.imagen) + '" alt="' + escapeHtml(p.nombre) + '" class="aspect-square w-full object-cover" loading="lazy">';
-          html += '  </a>';
-          html += '  <div class="mt-3 flex flex-col gap-1">';
-          html += '    <h3 class="text-sm font-medium text-brandDark leading-tight"><a class="hover:text-brandAccent" href="product.html?id=' + encodeURIComponent(p.id) + '">';
-          html +=        escapeHtml(p.nombre);
-          html += '    </a></h3>';
-          html += '    <p class="text-xs text-gray-400">';
-          html +=        escapeHtml(p.categoria) + ' · ' + escapeHtml(tallasTexto);
-          html += '    </p>';
-          html += '    <p class="text-sm font-semibold text-brandDark mt-1" aria-label="Precio provisional: ' + p.precio + ' euros">';
-          html +=       p.precio + ' €';
-          html += '    </p>';
-          html += '  </div>';
-          html += '</article>';
-        });
-
-        gridEl.innerHTML = html;
-      }
-
-      // ===== Escapar HTML para evitar inyección =====
-      function escapeHtml(texto) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode(texto));
-        return div.innerHTML;
-      }
-
-      // ===== Aplicar filtros =====
-      function aplicarFiltros() {
-        var categoriaSel = filtroCategoria.value;
-        var tallaSel = filtroTalla.value;
-
-        var filtrados = productos.filter(function (p) {
-          // Filtro por categoría
-          if (categoriaSel !== 'todas' && p.categoria !== categoriaSel) {
-            return false;
-          }
-          // Filtro por talla
-          if (tallaSel !== 'todas' && p.tallas.indexOf(tallaSel) === -1) {
-            return false;
-          }
-          return true;
-        });
-
-        renderizarProductos(filtrados);
-      }
-
-      // ===== Adjuntar eventos =====
-      filtroCategoria.addEventListener('change', aplicarFiltros);
-      filtroTalla.addEventListener('change', aplicarFiltros);
-
-      // ===== Render inicial (todos los productos) =====
-      poblarSelectorTallas();
-      renderizarProductos(productos);
-    })();
-  </script>
-
 </body>
 </html>
