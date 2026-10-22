@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de privacidad de MAISON. Documento de demostración académica que explica el tratamiento de datos ficticio.">
+  <meta name="theme-color" content="#F8F7F3">
+  <title>Política de privacidad — MAISON.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F7F3',
+            brandDark: '#20232A',
+            brandAccent: '#3159A5',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-brandBg text-brandDark antialiased">
+
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:block focus:bg-white focus:p-4 focus:text-brandAccent">Saltar al contenido</a>
+
+  <!-- ===== NAVBAR COMPARTIDO ===== -->
+  <header class="border-b border-gray-200 bg-brandBg">
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.html"
+         class="shrink-0 text-xl font-semibold tracking-widest text-brandDark">
+        MAISON.
+      </a>
+
+      <form action="#" role="search" class="mx-auto hidden w-full max-w-md sm:block">
+        <label for="site-search" class="sr-only">Buscar productos</label>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-200 bg-white px-4 py-2.5 text-sm
+                 text-brandDark placeholder:text-gray-400
+                 focus:border-brandAccent focus:outline-none"
+        >
+      </form>
+
+      <nav aria-label="Cuenta de usuario"
+           class="ml-auto flex shrink-0 items-center gap-4 text-sm">
+        <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
+          Mi cuenta
+        </a>
+        <a href="cart.html" class="text-brandDark hover:text-brandAccent">
+          Carrito
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Categorías"
+         class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
+                px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
+                sm:px-6 lg:px-8">
+      <a href="catalog.html#novedades" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="catalog.html#calzado" class="hover:text-brandAccent">CALZADO</a>
+      <a href="catalog.html#camisas" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="catalog.html#pantalones" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="catalog.html#accesorios" class="hover:text-brandAccent">ACCESORIOS</a>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main id="contenido" class="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <section aria-labelledby="privacidad-titulo" class="border-b border-gray-200 pb-8">
+      <p class="mb-3 text-xs font-medium uppercase tracking-widest text-brandAccent">Información legal</p>
+      <h1 id="privacidad-titulo" class="font-serif text-4xl sm:text-5xl">Política de privacidad</h1>
+      <p class="mt-4 max-w-2xl text-sm leading-6 text-gray-600">
+        <strong class="font-semibold text-brandDark">Documento de demostración.</strong>
+        Este texto es ficticio y se incluye únicamente con fines didácticos dentro de un prototipo académico.
+      </p>
+    </section>
+
+    <section aria-labelledby="pr-datos-titulo" class="mt-10 space-y-8">
+      <article>
+        <h2 id="pr-datos-titulo" class="font-serif text-2xl">1. Datos que tratamos</h2>
+        <p class="mt-3 text-sm leading-7 text-gray-600">
+          En esta demostración no se recogen, almacenan ni transmiten datos personales reales. Cualquier información
+          introducida en los formularios permanece únicamente en tu navegador y se descarta al recargar la página.
+        </p>
+      </article>
+      <article>
+        <h2 class="font-serif text-2xl">2. Finalidad</h2>
+        <p class="mt-3 text-sm leading-7 text-gray-600">
+          Los formularios del formulario de contacto y de la cuenta se muestran para ilustrar la estructura de un
+          sitio comercial. No se utilizan para crear perfiles, enviar comunicaciones ni vender los datos a terceros.
+        </p>
+      </article>
+      <article>
+        <h2 class="font-serif text-2xl">3. Cookies</h2>
+        <p class="mt-3 text-sm leading-7 text-gray-600">
+          Este prototipo no instala cookies propias de seguimiento. La única tecnología externa es el CDN de
+          Tailwind CSS, utilizado exclusivamente para aplicar estilos.
+        </p>
+      </article>
+      <article>
+        <h2 class="font-serif text-2xl">4. Derechos</h2>
+        <p class="mt-3 text-sm leading-7 text-gray-600">
+          Al no existir datos personales reales, no procede el ejercicio de derechos de acceso, rectificación,
+          supresión u oposición. Ante cualquier duda, puedes utilizar el formulario de contacto ficticio de la marca.
+        </p>
+      </article>
+      <article>
+        <h2 class="font-serif text-2xl">5. Contacto</h2>
+        <p class="mt-3 text-sm leading-7 text-gray-600">
+          Si tienes preguntas sobre esta política, puedes consultar nuestra página
+          <a href="contacto.html" class="text-brandAccent underline underline-offset-4 hover:text-brandDark">de contacto</a>.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER COMPARTIDO ===== -->
+  <footer class="bg-brandDark text-brandBg mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+        <div>
+          <a href="index.html"
+             class="text-xl font-semibold tracking-widest">
+            MAISON.
+          </a>
+          <p class="mt-3 text-sm text-gray-300">
+            La elegancia en movimiento.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="catalog.html#novedades" class="hover:text-white">Novedades</a></li>
+            <li><a href="catalog.html#calzado" class="hover:text-white">Calzado</a></li>
+            <li><a href="catalog.html#camisas" class="hover:text-white">Camisas</a></li>
+            <li><a href="catalog.html#pantalones" class="hover:text-white">Pantalones</a></li>
+            <li><a href="catalog.html#accesorios" class="hover:text-white">Accesorios</a></li>
+            <li><a href="catalog.html#todas" class="hover:text-white">Catálogo completo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">LEGAL</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="terminos.html" class="hover:text-white">Términos y condiciones</a></li>
+            <li><a href="privacidad.html" class="hover:text-white">Política de privacidad</a></li>
+            <li><a href="sobre-nosotros.html" class="hover:text-white">Sobre la marca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CONTACTO</h2>
+          <p class="mt-4 text-sm text-gray-300">
+            Escríbenos para cualquier consulta.
+          </p>
+          <a href="contacto.html"
+             class="mt-3 inline-block text-sm underline underline-offset-4 hover:text-white">
+            Contactar
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 border-t border-gray-600 pt-6 text-xs text-gray-400">
+        &copy; 2026 MAISON. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

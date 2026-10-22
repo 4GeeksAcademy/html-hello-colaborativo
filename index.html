@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre MAISON: camisas, pantalones, calzado y accesorios para vestir cada día con elegancia. Explora los nuevos lanzamientos y los más vendidos.">
+  <meta name="theme-color" content="#F8F7F3">
+  <title>MAISON. | Ropa y accesorios para cada día</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#F8F7F3',
+            brandDark: '#20232A',
+            brandAccent: '#3159A5',
+          },
+        },
+      },
+    };
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MAISON.",
+      "description": "Marca de ropa, calzado y accesorios. La elegancia en movimiento."
+    }
+  </script>
+</head>
+<body class="bg-brandBg text-brandDark antialiased">
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:block focus:bg-white focus:p-4 focus:text-brandAccent">Saltar al contenido</a>
+
+  <header class="border-b border-gray-200 bg-brandBg">
+    <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.html"
+         class="shrink-0 text-xl font-semibold tracking-widest text-brandDark">
+        MAISON.
+      </a>
+
+      <form action="#" role="search" class="mx-auto hidden w-full max-w-md sm:block">
+        <label for="site-search" class="sr-only">Buscar productos</label>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-200 bg-white px-4 py-2.5 text-sm
+                 text-brandDark placeholder:text-gray-400
+                 focus:border-brandAccent focus:outline-none"
+        >
+      </form>
+
+      <nav aria-label="Cuenta de usuario"
+           class="ml-auto flex shrink-0 items-center gap-4 text-sm">
+        <a href="cuenta.html" class="text-brandDark hover:text-brandAccent">
+          Mi cuenta
+        </a>
+        <a href="cart.html" class="text-brandDark hover:text-brandAccent">
+          Carrito
+        </a>
+      </nav>
+    </div>
+
+    <nav aria-label="Categorías"
+         class="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-6 gap-y-3
+                px-4 pb-4 text-xs font-medium tracking-wider text-brandDark
+                sm:px-6 lg:px-8">
+      <a href="catalog.html#novedades" class="hover:text-brandAccent">NOVEDADES</a>
+      <a href="catalog.html#calzado" class="hover:text-brandAccent">CALZADO</a>
+      <a href="catalog.html#camisas" class="hover:text-brandAccent">CAMISAS</a>
+      <a href="catalog.html#pantalones" class="hover:text-brandAccent">PANTALONES</a>
+      <a href="catalog.html#accesorios" class="hover:text-brandAccent">ACCESORIOS</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section aria-labelledby="campana-title" class="relative isolate flex min-h-[440px] items-center overflow-hidden bg-brandDark text-white md:min-h-[500px] lg:min-h-[560px]">
+      <img
+        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1440&amp;q=75"
+        srcset="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=640&amp;q=70 640w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1024&amp;q=75 1024w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1440&amp;q=75 1440w"
+        sizes="100vw"
+        width="1440" height="960"
+        alt="Selección de prendas y accesorios en una tienda de moda"
+        fetchpriority="high"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      >
+      <div class="absolute inset-0 -z-10 bg-black/60" aria-hidden="true"></div>
+      <div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <p class="text-xs font-medium uppercase">Nueva colección · Otoño 2026</p>
+        <h1 id="campana-title" class="mt-4 font-serif text-6xl leading-none sm:text-7xl lg:text-8xl">MAISON.</h1>
+        <p class="mt-6 max-w-md font-serif text-2xl leading-snug sm:text-3xl">La elegancia en movimiento.</p>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-200 sm:text-base">Siluetas relajadas, texturas que abrigan y esenciales para seguir tu propio ritmo.</p>
+        <a href="catalog.html#todas" class="mt-8 inline-flex min-h-12 items-center justify-center bg-brandBg px-6 py-3 text-sm font-semibold text-brandDark transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Descubrir la colección <span aria-hidden="true" class="ml-3">&rarr;</span></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="lanzamientos-title" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-medium uppercase text-brandAccent">Recién llegados</p>
+          <h2 id="lanzamientos-title" class="mt-2 font-serif text-3xl sm:text-4xl">Nuevos lanzamientos</h2>
+        </div>
+        <a href="catalog.html#novedades" aria-label="Ver todo: nuevos lanzamientos" class="inline-flex min-h-11 items-center text-sm underline underline-offset-4 hover:text-brandAccent">Ver todo <span aria-hidden="true" class="ml-2">&rarr;</span></a>
+      </div>
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+        <li>
+          <article>
+            <a href="catalog.html#producto-6" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+              <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Abrigo Camel" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+              </div>
+              <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Abrigo Camel</h3>
+              <p class="mt-1 text-xs text-gray-600">Lana y cachemir</p>
+              <p class="mt-2 text-sm font-semibold">220,00 €</p>
+            </a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <a href="catalog.html#producto-1" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+              <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                <img src="https://plus.unsplash.com/premium_photo-1664373232909-32af52b7cacd?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Blusa Sirena" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+              </div>
+              <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Blusa Sirena</h3>
+              <p class="mt-1 text-xs text-gray-600">Algodón orgánico</p>
+              <p class="mt-2 text-sm font-semibold">89,00 €</p>
+            </a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <a href="catalog.html#producto-9" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+              <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1789111161022-1970ba92f3b9?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Vestido Midi" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+              </div>
+              <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Vestido Midi</h3>
+              <p class="mt-1 text-xs text-gray-600">Viscosa fluida</p>
+              <p class="mt-2 text-sm font-semibold">135,00 €</p>
+            </a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <a href="catalog.html#producto-20" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+              <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1727524366429-27de8607d5f6?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Chaqueta de Cuero" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+              </div>
+              <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Chaqueta de Cuero</h3>
+              <p class="mt-1 text-xs text-gray-600">Piel</p>
+              <p class="mt-2 text-sm font-semibold">250,00 €</p>
+            </a>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="vendidos-title" class="border-t border-gray-200">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-medium uppercase text-brandAccent">Los favoritos</p>
+            <h2 id="vendidos-title" class="mt-2 font-serif text-3xl sm:text-4xl">Más vendidos</h2>
+          </div>
+          <a href="catalog.html#todas" aria-label="Ver todo: más vendidos" class="inline-flex min-h-11 items-center text-sm underline underline-offset-4 hover:text-brandAccent">Ver todo <span aria-hidden="true" class="ml-2">&rarr;</span></a>
+        </div>
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+          <li>
+            <article>
+              <a href="catalog.html#producto-12" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img src="https://images.unsplash.com/photo-1759572095384-1a7e646d0d4f?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Camiseta Algodón" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+                </div>
+                <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Camiseta Algodón</h3>
+                <p class="mt-1 text-xs text-gray-600">Algodón peinado</p>
+                <p class="mt-2 text-sm font-semibold">45,00 €</p>
+              </a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <a href="catalog.html#producto-2" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img src="https://images.unsplash.com/photo-1668069226492-508742b03147?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Zapatos Derby" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+                </div>
+                <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Zapatos Derby</h3>
+                <p class="mt-1 text-xs text-gray-600">Piel</p>
+                <p class="mt-2 text-sm font-semibold">145,00 €</p>
+              </a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <a href="catalog.html#producto-18" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img src="https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Pantalón Recto" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+                </div>
+                <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Pantalón Recto</h3>
+                <p class="mt-1 text-xs text-gray-600">Algodón sarga</p>
+                <p class="mt-2 text-sm font-semibold">98,00 €</p>
+              </a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <a href="catalog.html#producto-10" class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brandAccent">
+                <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img src="https://images.unsplash.com/photo-1624687943971-e86af76d57de?auto=format&amp;fit=crop&amp;w=480&amp;q=70" alt="Bolso Tote" width="480" height="640" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105">
+                </div>
+                <h3 class="mt-4 text-sm font-medium group-hover:text-brandAccent">Bolso Tote</h3>
+                <p class="mt-1 text-xs text-gray-600">Lona y piel</p>
+                <p class="mt-2 text-sm font-semibold">175,00 €</p>
+              </a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-brandDark text-brandBg">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+        <div>
+          <a href="index.html"
+             class="text-xl font-semibold tracking-widest">
+            MAISON.
+          </a>
+          <p class="mt-3 text-sm text-gray-300">
+            La elegancia en movimiento.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CATEGORÍAS</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="catalog.html#novedades" class="hover:text-white">Novedades</a></li>
+            <li><a href="catalog.html#calzado" class="hover:text-white">Calzado</a></li>
+            <li><a href="catalog.html#camisas" class="hover:text-white">Camisas</a></li>
+            <li><a href="catalog.html#pantalones" class="hover:text-white">Pantalones</a></li>
+            <li><a href="catalog.html#accesorios" class="hover:text-white">Accesorios</a></li>
+            <li><a href="catalog.html#todas" class="hover:text-white">Catálogo completo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">LEGAL</h2>
+          <ul class="mt-4 space-y-3 text-sm text-gray-300">
+            <li><a href="terminos.html" class="hover:text-white">Términos y condiciones</a></li>
+            <li><a href="privacidad.html" class="hover:text-white">Política de privacidad</a></li>
+            <li><a href="sobre-nosotros.html" class="hover:text-white">Sobre la marca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold tracking-wider">CONTACTO</h2>
+          <p class="mt-4 text-sm text-gray-300">
+            Escríbenos para cualquier consulta.
+          </p>
+          <a href="contacto.html"
+             class="mt-3 inline-block text-sm underline underline-offset-4 hover:text-white">
+            Contactar
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-10 border-t border-gray-600 pt-6 text-xs text-gray-400">
+        &copy; 2026 MAISON. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
