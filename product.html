@@ -72,7 +72,7 @@
       <ol class="flex items-center gap-1.5">
         <li><a href="index.html" class="hover:text-brandAccent">Inicio</a></li>
         <li aria-hidden="true">/</li>
-        <li><a href="catalogo.html" class="hover:text-brandAccent">Catálogo</a></li>
+        <li><a href="catalog.html" class="hover:text-brandAccent">Catálogo</a></li>
         <li aria-hidden="true">/</li>
         <li id="breadcrumb-producto" class="text-brandDark font-medium" aria-current="page">Producto</li>
       </ol>
@@ -269,7 +269,7 @@
   </footer>
 
   <!-- ===== JAVASCRIPT: FICHA Y SELECTOR DE CANTIDAD ===== -->
-  <script src="productos.js"></script>
+  <script src="products.js"></script>
   <script>
     (function () {
       'use strict';
@@ -284,7 +284,7 @@
       });
 
       if (!producto) {
-        document.querySelector('main').innerHTML = '<section class="py-16 text-center"><h1 class="text-2xl font-semibold">Producto no encontrado</h1><p class="mt-3 text-gray-500">Elige un producto desde el <a class="underline hover:text-brandAccent" href="catalogo.html">catálogo</a>.</p></section>';
+        document.querySelector('main').innerHTML = '<section class="py-16 text-center"><h1 class="text-2xl font-semibold">Producto no encontrado</h1><p class="mt-3 text-gray-500">Elige un producto desde el <a class="underline hover:text-brandAccent" href="catalog.html">catálogo</a>.</p></section>';
         return;
       }
 
