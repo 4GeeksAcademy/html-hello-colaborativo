@@ -54,8 +54,10 @@ Las imágenes de producto y del hero se sirven desde **Unsplash** (`images.unspl
 ├── cuenta.html         # Mi cuenta (login/registro de demostración)
 ├── contacto.html       # Formulario de contacto de demostración
 ├── privacidad.html     # Política de privacidad (documento ficticio)
+├── product.html        # Ficha individual de producto con dos columnas, talla, cantidad y Schema.org
 ├── sobre-nosotros.html # Sobre la marca (contenido ficticio)
 ├── terminos.html       # Términos y condiciones (documento ficticio)
+├── products.js         # Datos de los 20 productos para la ficha dinámica
 ├── server.py           # Servidor Flask (boilerplate 4Geeks Academy)
 ├── learn.json          # Metadatos del template 4Geeks
 └── .vscode/            # Ajustes de workspace
@@ -71,7 +73,7 @@ Las imágenes de producto y del hero se sirven desde **Unsplash** (`images.unspl
 - Incluye datos estructurados JSON-LD (`Organization`).
 
 ### Catálogo — `catalog.html`
-- Grilla de los **20 productos** del catálogo, con `id="producto-N"` e `data-cat` de categoría.
+- Grilla de los **20 productos** del catálogo, con `id="producto-N"` e `data-cat` de categoría. Cada tarjeta enlaza la imagen y el nombre del producto a su ficha individual (`product.html?id=N`).
 - **Filtro por categoría sin JavaScript**: anclas ocultas (`#todas`, `#novedades`, `#calzado`, `#camisas`, `#pantalones`, `#accesorios`) que activan reglas CSS `:target`. El estado base (sin ancla) muestra el catálogo completo.
 - Cada tarjeta incluye ficha desplegable con `<details>/<summary>`: referencia (`MAI-001`…), tallas, precio unitario y material, más un botón "Agregar al carrito" que enlaza a `cart.html`.
 
@@ -150,7 +152,7 @@ Se sirve `index.html` en `http://localhost:3000`. También es posible abrir cual
 
 ## Características destacadas
 
-- **Sin JavaScript de negocio**: el filtrado por categorías del catálogo usa únicamente reglas CSS `:target` con anclas ocultas; las fichas de producto usan `<details>/<summary>` nativo.
+- **Filtrado CSS sin JavaScript**: el filtrado por categorías del catálogo usa únicamente reglas CSS `:target` con anclas ocultas; las fichas de producto en catálogo usan `<details>/<summary>` nativo. Solo las páginas individuales de producto (`product.html`) usan JavaScript para cargar datos dinámicamente.
 - **Responsive**: grillas y layouts adaptables con clases utilitarias de Tailwind (`grid-cols-2 … lg:grid-cols-4`).
 - **Accesibilidad**: enlaces "Saltar al contenido", `aria-label`/`aria-labelledby`, texto alternativo en imágenes, jerarquía de encabezados y foco visible.
 - **Datado estructurado**: JSON-LD en `index.html` y microdatos `schema.org` en carrito y checkout.
@@ -160,6 +162,6 @@ Se sirve `index.html` en `http://localhost:3000`. También es posible abrir cual
 
 ## Notas de proyecto
 
-- Los ficheros `products.js` y `product.html` que aparecían en versiones anteriores del repositorio fueron retirados en la refactorización: el sitio es ahora 100 % HTML/CSS.
+- Las fichas individuales de producto (`product.html`) se sirven con JavaScript (`products.js`) para cargar dinámicamente los datos de cada producto a partir del identificador en la URL, incluyendo Schema.org Product enriquecido.
 - El proyecto se encuentra en la rama `borrador` del repositorio `html-hello-colaborativo` del espacio de trabajo.
 - `learn.json` conserva los metadatos originales del template 4Geeks (título y descripción en inglés/español), aunque el sitio en sí está íntegramente en español.
